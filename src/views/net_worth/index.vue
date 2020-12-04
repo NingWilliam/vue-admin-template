@@ -27,7 +27,7 @@ import { mapGetters } from 'vuex';
         </el-form-item>
 
         <el-form-item>
-          <el-button type="primary" @click="getAccountOverviewDatail">确定</el-button>
+          <el-button type="primary" @click="getAccountOverviewDetail">确定</el-button>
         </el-form-item>
       </el-form>
 
@@ -43,7 +43,7 @@ import { mapGetters } from 'vuex';
       <el-col v-else :span="24">
         <h3>账户净值图</h3>
           <div class="noNav">
-            <p>当前净值暂无图表数据,请选择其他账户或其他日期</p>
+            <p>{{ lastAccount }}当前净值暂无图表数据,请选择其他账户或其他日期</p>
           </div>
         </el-col>
       </el-row>
@@ -53,11 +53,11 @@ import { mapGetters } from 'vuex';
 
 <script>
 // import echarts from "echarts";
-import { getAccountOverviewList } from '@/api/account'
+import { getAccountOverviewDetail } from '@/api/account'
 import { mapGetters } from 'vuex'
 
 export default {
-  name: "AccountDatail",
+  name: "AccountDetail",
   data() {
     return {
       // worth: {
@@ -116,7 +116,7 @@ export default {
           text: ''
         },
         xAxis: {
-          type: "datetime",
+          type: 'datetime',
           title: {
             text: '时间'
           },
@@ -139,13 +139,13 @@ export default {
               connectorAllowed: false
             },
             marker: {
-              enabled: false
+              enabled: false /* 数据点是否显示*/
             }
           }
         },
         series: [{
           name: '账户净值',
-          data: [[159132, 1.1],[159133,1.3],[159133,1.2]]
+          data: [[1591329600000, 1.1], [1591331400000, 1.3], [1591333200000, 1.2]]
         }]
       }
     }

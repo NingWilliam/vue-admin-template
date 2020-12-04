@@ -1,24 +1,42 @@
 <template>
   <div class="app-container">
-        <el-card>
-          <h3>账户概览表</h3>
-          <el-table :data="accountOverviewInfo" stripe border>
-            <el-table-column prop="account_id" label="账户ID" align="center" min-width="80" />
-            <el-table-column prop="time_point" label="时间" align="center" min-width="150" />
-            <el-table-column prop="nav" label="净值" align="center" min-width="80" />
+    <el-card>
+      <h3>账户概览表</h3>
+      <el-table :data="accountOverviewInfo" stripe border>
+        <el-table-column type="index" label="序号" align="center" width="60" />
+        <el-table-column
+          prop="account_id"
+          label="账户ID"
+          align="center"
+          min-width="80"
+        />
+        <el-table-column
+          prop="time_point"
+          label="时间"
+          align="center"
+          min-width="150"
+        />
+        <el-table-column
+          prop="nav"
+          label="净值"
+          align="center"
+          min-width="80"
+        />
 
-            <el-table-column label="操作" align="center" min-width="150">
-              <template slot-scope="scope">
-                <el-button type="primary" @click="getDetail(scope.row)">查看详情</el-button>
-                <!-- 修改按钮 -->
-                <!-- <el-button
+        <el-table-column label="操作" align="center" min-width="150">
+          <template slot-scope="scope">
+            <el-button type="primary" @click="getDetail(scope.row)"
+              >查看详情</el-button
+            >
+            <!-- 修改按钮 -->
+            <!-- <el-button
                   type="primary"
                   @click="editSetting(scope.$index, scope.row)"
                   size="mini"
                   >修改</el-button
                 > -->
-                <!-- 删除按钮 -->
-                <!-- <el-button
+            <!-- 删除按钮 -->
+            <!-- <el-button
                   type="danger"
                   size="mini"
                   @click="deleteSetting(scope.$index, scope.row)"
@@ -31,7 +49,7 @@
           <el-button type="primary" @click="dialogSetting">新增账户</el-button>
         </el-card> -->
 
-    <!-- <el-dialog
+            <!-- <el-dialog
       title="修改账户"
       :visible.sync="editDialog"
       width="60%"
@@ -73,7 +91,7 @@
       </span>
     </el-dialog> -->
 
-    <!-- <el-dialog
+            <!-- <el-dialog
       title="新增账户"
       :visible.sync="addDialog"
       width="60%"
@@ -120,7 +138,7 @@
 </template>
 
 <script>
-import { getAccountOverviewList } from '@/api/account'
+import { getAccountOverviewList } from "@/api/account";
 export default {
   name: "Account",
   data() {
@@ -138,7 +156,7 @@ export default {
         //   time_point: "2020-11-16 10:00:00",
         //   nav: "0.97"
         // }
-      ],
+      ]
       // addDialog: false,
       // editDialog: false,
       // user: {},
@@ -149,16 +167,16 @@ export default {
       //   time_point: "",
       //   nav: ""
       // }
-    }
+    };
   },
-  created () {
-    this.getAccountOverviewInfo()
+  created() {
+    this.getAccountOverviewInfo();
   },
   methods: {
     getAccountOverviewInfo() {
       getAccountOverviewList().then(res => {
-        this.accountOverviewInfo = res.data
-      })
+        this.accountOverviewInfo = res.data;
+      });
     },
     getDetail(row) {
       console.log(row);
@@ -233,6 +251,4 @@ export default {
 // }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

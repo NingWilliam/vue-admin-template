@@ -12,6 +12,7 @@ import App from "./App";
 import store from "./store";
 import router from "./router";
 import axios from "axios";
+// import api from "api";
 
 import "@/icons"; // icon
 import "@/permission"; // permission control
@@ -34,6 +35,29 @@ if (process.env.NODE_ENV === "production") {
 // Vue.use(ElementUI, { locale });
 // 如果想要中文版 element-ui，按如下方式声明
 Vue.use(ElementUI)
+
+import Highcharts from 'highcharts/highcharts'
+import HighchartsVue from 'highcharts-vue'
+
+import stockInit from 'highcharts/modules/stock'
+import HighchartsMore from 'highcharts/highcharts-more'
+import HighchartsDrilldown from 'highcharts/modules/drilldown'
+import Highcharts3D from 'highcharts/highcharts-3d'
+import HighchartszhCN from '@/utils/highcharts-zh_CN.es6'
+
+stockInit(Highcharts)
+HighchartsMore(Highcharts)
+HighchartsDrilldown(Highcharts)
+Highcharts3D(Highcharts)
+HighchartszhCN(Highcharts)
+
+Highcharts.setOptions({
+    global: { useUTC: false }
+})
+
+Vue.use(HighchartsVue)
+
+
 Vue.prototype.$echarts = echarts;
 
 Vue.config.productionTip = false;

@@ -58,11 +58,23 @@ export const constantRoutes = [{
     },
 
     {
+        path: "/account",
+        component: Layout,
+        children: [{
+            path: "/account/index",
+            name: "AccountList",
+            component: () =>
+                import ("@/views/account/index"),
+            meta: { title: "账户列表", icon: "accountList" }
+        }]
+    },
+
+    {
         path: "/overview",
         component: Layout,
         children: [{
             path: "/overview/index",
-            name: "Overview",
+            name: "OverviewList",
             component: () =>
                 import ("@/views/overview/index"),
             meta: { title: "账户概览", icon: "overview" }
@@ -114,6 +126,18 @@ export const constantRoutes = [{
             component: () =>
                 import ("@/views/handicap/index"),
             meta: { title: "盘口差详情", icon: "handicap" }
+        }]
+    },
+
+    {
+        path: "/page",
+        component: Layout,
+        children: [{
+            path: "/page/index",
+            name: "Page",
+            component: () =>
+                import ("@/views/page/index"),
+            meta: { title: "详情", icon: "handicap" }
         }]
     },
 
